@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{340790C4-E2CB-476D-8A87-846F1F4A5F09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{1BA5FC5A-3FF4-4C79-81B7-DA543A584A4B}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{340790C4-E2CB-476D-8A87-846F1F4A5F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340790C4-E2CB-476D-8A87-846F1F4A5F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340790C4-E2CB-476D-8A87-846F1F4A5F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340790C4-E2CB-476D-8A87-846F1F4A5F09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA5FC5A-3FF4-4C79-81B7-DA543A584A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA5FC5A-3FF4-4C79-81B7-DA543A584A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA5FC5A-3FF4-4C79-81B7-DA543A584A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA5FC5A-3FF4-4C79-81B7-DA543A584A4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
