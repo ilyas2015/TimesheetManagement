@@ -62,9 +62,10 @@
   <ItemGroup>
     <Compile Include="DataModels\ApplicationUser.cs" />
     <Compile Include="DataModels\ApplicationDbContext.cs" />
+    <Compile Include="DataModels\TsEntry.cs" />
     <Compile Include="DataModels\TsTemplate.cs" />
     <Compile Include="DataModels\TsDayEntry.cs" />
-    <Compile Include="DataModels\TsEntry.cs" />
+    <Compile Include="DataModels\TsWeekEntry.cs" />
     <Compile Include="Migrations\201704100044311_FirstInitialTables.cs" />
     <Compile Include="Migrations\201704100044311_FirstInitialTables.Designer.cs">
       <DependentUpon>201704100044311_FirstInitialTables.cs</DependentUpon>
@@ -76,6 +77,22 @@
     <Compile Include="Migrations\201704110042247_CreateAdminUser.cs" />
     <Compile Include="Migrations\201704110042247_CreateAdminUser.Designer.cs">
       <DependentUpon>201704110042247_CreateAdminUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704120123230_AddingNewFieldsToTemplate.cs" />
+    <Compile Include="Migrations\201704120123230_AddingNewFieldsToTemplate.Designer.cs">
+      <DependentUpon>201704120123230_AddingNewFieldsToTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704152258500_UpdateDbStructure.cs" />
+    <Compile Include="Migrations\201704152258500_UpdateDbStructure.Designer.cs">
+      <DependentUpon>201704152258500_UpdateDbStructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704152301399_UpdateDbStructure2.cs" />
+    <Compile Include="Migrations\201704152301399_UpdateDbStructure2.Designer.cs">
+      <DependentUpon>201704152301399_UpdateDbStructure2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704152308224_UpdateDbStructure3.cs" />
+    <Compile Include="Migrations\201704152308224_UpdateDbStructure3.Designer.cs">
+      <DependentUpon>201704152308224_UpdateDbStructure3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DbMigrationConfig.cs" />
   </ItemGroup>
@@ -93,6 +110,25 @@
     <EmbeddedResource Include="Migrations\201704110042247_CreateAdminUser.resx">
       <DependentUpon>201704110042247_CreateAdminUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704120123230_AddingNewFieldsToTemplate.resx">
+      <DependentUpon>201704120123230_AddingNewFieldsToTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704152258500_UpdateDbStructure.resx">
+      <DependentUpon>201704152258500_UpdateDbStructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704152301399_UpdateDbStructure2.resx">
+      <DependentUpon>201704152301399_UpdateDbStructure2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704152308224_UpdateDbStructure3.resx">
+      <DependentUpon>201704152308224_UpdateDbStructure3.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-1.8.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

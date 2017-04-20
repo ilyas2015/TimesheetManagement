@@ -13,9 +13,9 @@ namespace Data.DataModels
         [Required]
         public DateTime EventDate { get; set; }
 
-        public int TsEntryId { get; set; }
+        public int TsWeekEntryId { get; set; }
         [Required]
-        public TsEntry TsEntry { get; set; }
+        public TsWeekEntry TsWeekEntry { get; set; }
         [Required]
         public TimeSpan Hours { get; set; }
     }

@@ -14,6 +14,7 @@ namespace Data.DataModels
     {
         public IDbSet<TsWeekTemplate> TsWeekTemplates { get; set; }
         public IDbSet<TsEntry> TsEntries { get; set; }
+        public IDbSet<TsWeekEntry> TsWeekEntriesEntries { get; set; }
         public IDbSet<TsDayEntry> TsDayEntries { get; set; }
 
         public ApplicationDbContext()

@@ -130,14 +130,14 @@ namespace Data.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.TsDayEntries", "TsEntryId", "dbo.TsEntries");
+            DropForeignKey("dbo.TsDayEntries", "TsWeekEntryId", "dbo.TsEntries");
             DropForeignKey("dbo.TsEntries", "WeekTemplate_TsWeekTemplateId", "dbo.TsWeekTemplates");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.TsEntries", new[] { "WeekTemplate_TsWeekTemplateId" });
-            DropIndex("dbo.TsDayEntries", new[] { "TsEntryId" });
+            DropIndex("dbo.TsDayEntries", new[] { "TsWeekEntryId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");

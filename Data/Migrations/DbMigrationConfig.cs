@@ -75,8 +75,8 @@ namespace Data.Migrations
         {
             context.TsWeekTemplates.Add(new TsWeekTemplate
             {
-                TemplateName = "Usual Work Week 7.5 hours/day",
-                FirstDayOfWeek = DayOfWeek.Sunday,
+                TemplateName = "Standard Work Week 7.5 hours/day",
+                //FirstDayOfWeek = DayOfWeek.Sunday,
                 FillDay1 = false,
                 FillDay2 = true,
                 FillDay3 = true,

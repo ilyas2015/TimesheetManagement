@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebUI.Models.TsEntryViewModel>
+
+@{
+    ViewBag.Title = "List of My Timesheets";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-hover" id="timesheets">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalHours)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalHours)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TsEntryId }) |
+            <button class='btn-link js-delete' data-tmp-id=@item.TsEntryId>Delete</button>
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.TsEntryId })*@
+        </td>
+    </tr>
+}
+
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+
+            $("#timesheets").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm(
+                        "Are you sure you want to delete this timesheet?",
+                        function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/timesheet/delete/" + button.attr("data-tmp-id"),
+                                    method: "POST",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                    return false;
+                });
+        });
+
+    </script>
+}

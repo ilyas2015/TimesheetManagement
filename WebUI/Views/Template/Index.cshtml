@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebUI.Models.TsTemplateViewModel>
+
+@{
+    ViewBag.Title = "List of My Weekly Templates";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-hover" id="templates">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TemplateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoursInDay)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TemplateName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoursInDay)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.TsWeekTemplateId  }) 
+            <button class='btn-link js-delete' data-tmp-id=@item.TsWeekTemplateId>Delete</button>
+            @*@Html.ActionLink("Delete", "Delete", new { id = item.TsWeekTemplateId })*@
+        </td>
+    </tr>
+}
+
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            
+            $("#templates").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm(
+                        "Are you sure you want to delete this template?",
+                        function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/template/delete/" + button.attr("data-tmp-id"),
+                                    method: "POST",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                    return false;
+                });
+        });
+
+    </script>
+}
