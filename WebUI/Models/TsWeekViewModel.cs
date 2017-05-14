@@ -11,8 +11,12 @@ namespace WebUI.Models
     {
         public int TsWeekEntryId { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "End Date")]
         public DateTime EndDate { get; set; }
         //public int WeekTemplateId { get; set; }
         //[Required]

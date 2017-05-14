@@ -65,6 +65,7 @@ namespace WebUI.Controllers
                 TsEntry dbEntry = new TsEntry();
                 dbEntry.StartDate = model.StartDate;
                 dbEntry.EndDate = model.EndDate;
+                dbEntry.TotalHours = model.TotalHours;
                 dbEntry.Name = $"{model.StartDate.ToString("yyyy-MM-dd")} - {model.EndDate.ToString("yyyy-MM-dd")}";
                 dbEntry.UserId = userID;
                 db.TsEntries.Add(dbEntry);
@@ -122,6 +123,7 @@ namespace WebUI.Controllers
             dbEntry.StartDate = model.StartDate;
             dbEntry.EndDate = model.EndDate;
             dbEntry.TotalHours = model.TotalHours;
+            dbEntry.Name = $"{model.StartDate.ToString("yyyy-MM-dd")} - {model.EndDate.ToString("yyyy-MM-dd")}";
             db.SaveChanges();
             return RedirectToAction("Index");
 

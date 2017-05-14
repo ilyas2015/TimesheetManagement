@@ -6,7 +6,6 @@
 
 <h2>@ViewBag.Title</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -39,7 +38,10 @@
                 @Html.ValidationMessageFor(model => model.TotalHours, "", new { @class = "text-danger" })
             </div>
         </div>
-
+		if(Model.Weeks!= null && Model.Weeks.Count > 0)
+        {
+			@Html.Partial("_Weeks", Model.Weeks)
+		}
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -53,36 +55,28 @@
 </div>
 
 
-@section scripts2 {
+@section scripts {
     @Scripts.Render("~/bundles/bootstrap-datetimepicker")
-
 }
 
 @section styles{
     @Styles.Render("~/Content/bootstrap-datetimepicker")
 }
 
-
-
-
-
-
 <script>
-    $(function () {
-        //$.fn.datepicker.defaults.format = "dd/mm/yyyy";
-        //$('#StartDate').datetimepicker(
-        //    {
-        //        format: "dd-MM-YYYY",
-        //        sideBySide: true,
-        //        showTodayButton: true
-        //    });
-        //$('#EndDate').datetimepicker(
-        //    {
-        //        format: "DD-MMM-YYYY",
-        //        sideBySide: true,
-        //        showTodayButton: true
-        //    });
-        $('#StartDate').datetimepicker();
-        $('#EndDate').datetimepicker();
+    jQuery(document).ready(function() {
+        jQuery('#StartDate').datetimepicker(
+        {
+           format: "YYYY-MM-DD",
+           sideBySide: true,
+           showTodayButton: true
+        });
+
+        jQuery('#EndDate').datetimepicker(
+        {
+            format: "YYYY-MM-DD",
+            sideBySide: true,
+            showTodayButton: true
+        });
     });
 </script>

@@ -1,0 +1,22 @@
+@model List<WebUI.Models.TsWeekViewModel>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalHours)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TsWeekEntryId }) |
+            <button class='btn-link js-delete' data-tmp-id=@item.TsWeekEntryId>Delete</button>
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.TsWeekEntryId })*@
+        </td>
+    </tr>
+}
