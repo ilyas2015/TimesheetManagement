@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -38,10 +38,54 @@
                 @Html.ValidationMessageFor(model => model.TotalHours, "", new { @class = "text-danger" })
             </div>
         </div>
-		if(Model.Weeks!= null && Model.Weeks.Count > 0)
+        @if (Model.Weeks != null && Model.Weeks.Count > 0)
         {
-			@Html.Partial("_Weeks", Model.Weeks)
-		}
+            var modelWeeks = Model.Weeks;
+            <table class="table table-bordered table-hover" id="timesheets">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Weeks.FirstOrDefault().TsEntryId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Weeks.FirstOrDefault().StartDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Weeks.FirstOrDefault().EndDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Weeks.FirstOrDefault().TotalHours)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (WebUI.Models.TsWeekViewModel item2 in modelWeeks)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(item2.Name, "Edit", new { id = item2.TsEntryId })
+                            @*@Html.DisplayFor(modelItem => item.Name)*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(item2 => item2.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(item2 => item2.EndDate)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(item2 => item2.TotalHours)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item2.TsEntryId }) |
+                            <button class='btn-link js-delete' data-tmp-id=@item2.TsEntryId>Delete</button>
+                            @*@Html.ActionLink("Delete", "Delete", new { id=item.TsEntryId })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+        @Html.Partial("_Weeks", Model)
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -64,19 +108,19 @@
 }
 
 <script>
-    jQuery(document).ready(function() {
-        jQuery('#StartDate').datetimepicker(
-        {
-           format: "YYYY-MM-DD",
-           sideBySide: true,
-           showTodayButton: true
-        });
+    $(document).ready(function () {
+        $('#StartDate').datetimepicker(
+            {
+                format: "MM/DD/YYYY",
+                sideBySide: true,
+                showTodayButton: true
+            });
 
-        jQuery('#EndDate').datetimepicker(
-        {
-            format: "YYYY-MM-DD",
-            sideBySide: true,
-            showTodayButton: true
-        });
+        $('#EndDate').datetimepicker(
+            {
+                format: "MM/DD/YYYY",
+                sideBySide: true,
+                showTodayButton: true
+            });
     });
 </script>

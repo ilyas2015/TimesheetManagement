@@ -94,6 +94,10 @@
     <Compile Include="Migrations\201704152308224_UpdateDbStructure3.Designer.cs">
       <DependentUpon>201704152308224_UpdateDbStructure3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707151443021_AddIsDefaultProperty.cs" />
+    <Compile Include="Migrations\201707151443021_AddIsDefaultProperty.Designer.cs">
+      <DependentUpon>201707151443021_AddIsDefaultProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DbMigrationConfig.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704152308224_UpdateDbStructure3.resx">
       <DependentUpon>201704152308224_UpdateDbStructure3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707151443021_AddIsDefaultProperty.resx">
+      <DependentUpon>201707151443021_AddIsDefaultProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

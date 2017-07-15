@@ -1,22 +1,41 @@
-@model List<WebUI.Models.TsWeekViewModel>
+@model WebUI.Models.TsEntryViewModel
 
-@foreach (var item in Model) {
+<p>
+    @Html.ActionLink("Create New", "Create", "Week", new { id = Model.TsEntryId })
+</p>
+
+<table class="table table-bordered table-hover" id="timesheets">
     <tr>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalHours)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TsWeekEntryId }) |
-            <button class='btn-link js-delete' data-tmp-id=@item.TsWeekEntryId>Delete</button>
-            @*@Html.ActionLink("Delete", "Delete", new { id=item.TsWeekEntryId })*@
-        </td>
+        <th>
+            <label>Start Date</label>
+        </th>
+        <th>
+            <label>End Date</label>
+        </th>
+        <th>
+            <label>Total Hours</label>
+        </th>
+        <th></th>
     </tr>
-}
+    @foreach (var item in Model.Weeks)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalHours)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Week", new { id = item.TsWeekEntryId }, null) |
+                <button class='btn-link js-delete' data-tmp-id=@item.TsWeekEntryId>Delete</button>
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.TsWeekEntryId })*@
+            </td>
+        </tr>
+    }
+</table>

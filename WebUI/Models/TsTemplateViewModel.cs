@@ -36,6 +36,7 @@ namespace WebUI.Models
         public bool FillDay6 { get; set; }
         [Display(Name = "Saturday")]
         public bool FillDay7 { get; set; }
-        
+        [Display(Name ="Is Default")]
+        public bool IsDefault { get; set; }
     }
 }

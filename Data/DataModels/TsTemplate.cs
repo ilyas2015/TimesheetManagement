@@ -21,6 +21,6 @@ namespace Data.DataModels
         public bool FillDay5 { get; set; }
         public bool FillDay6 { get; set; }
         public bool FillDay7 { get; set; }
-
+        public bool IsDefault { get; set; }
     }
 }

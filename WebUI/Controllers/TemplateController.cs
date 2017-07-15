@@ -35,7 +35,8 @@ namespace WebUI.Controllers
                         FillDay4 = e.FillDay4,
                         FillDay5 = e.FillDay5,
                         FillDay6 = e.FillDay6,
-                        FillDay7 = e.FillDay6
+                        FillDay7 = e.FillDay6,
+                        IsDefault = e.IsDefault
                     }).ToList();
             return View(templates);
         }
@@ -58,8 +59,9 @@ namespace WebUI.Controllers
             {
                 return View(template);
             }
+            var userId = User.Identity.GetUserId();
             var dbTemplate = new TsWeekTemplate();
-            dbTemplate.ApplicationUserId = User.Identity.GetUserId();
+            dbTemplate.ApplicationUserId = userId;
             dbTemplate.TemplateName = template.TemplateName;
             dbTemplate.HoursInDay = template.HoursInDay;
             dbTemplate.FillDay1 = template.FillDay1;
@@ -69,10 +71,28 @@ namespace WebUI.Controllers
             dbTemplate.FillDay5 = template.FillDay5;
             dbTemplate.FillDay6 = template.FillDay6;
             dbTemplate.FillDay7 = template.FillDay7;
+            dbTemplate.IsDefault = template.IsDefault;
 
             db.TsWeekTemplates.Add(dbTemplate);
             db.SaveChanges();
-            return RedirectToAction("Index");
+
+            // un-checking all other isDefault values
+            if (dbTemplate.IsDefault)
+            {
+                var otherTemplates = db.TsWeekTemplates.Where(e => e.ApplicationUserId == userId && e.IsDefault && e.TsWeekTemplateId != dbTemplate.TsWeekTemplateId).ToList();
+                if (otherTemplates.Count > 0)
+                {
+                    foreach (var item in otherTemplates)
+                    {
+                        item.IsDefault = false;
+                    }
+                    db.SaveChanges();
+                }
+            }
+            
+            
+
+            return View("Index");
         }
 
         public ActionResult Edit(int id)
@@ -92,7 +112,7 @@ namespace WebUI.Controllers
             viewTemplate.FillDay5 = template.FillDay5;
             viewTemplate.FillDay6 = template.FillDay6;
             viewTemplate.FillDay7 = template.FillDay7;
-
+            viewTemplate.IsDefault = template.IsDefault;
             return View(viewTemplate);
         }
 
@@ -113,8 +133,23 @@ namespace WebUI.Controllers
             dbTemplate.FillDay6 = template.FillDay6;
             dbTemplate.FillDay7 = template.FillDay7;
             dbTemplate.ApplicationUserId = userId;
+            dbTemplate.IsDefault = template.IsDefault;
 
             db.SaveChanges();
+
+            // un-checking all other isDefault values
+            if (dbTemplate.IsDefault)
+            {
+                var otherTemplates = db.TsWeekTemplates.Where(e => e.ApplicationUserId == userId && e.IsDefault && e.TsWeekTemplateId != dbTemplate.TsWeekTemplateId).ToList();
+                if (otherTemplates.Count > 0)
+                {
+                    foreach (var item in otherTemplates)
+                    {
+                        item.IsDefault = false;
+                    }
+                    db.SaveChanges();
+                }
+            }
 
             return RedirectToAction("Index");
         }

@@ -9,6 +9,7 @@ using Data.DataModels;
 using Microsoft.AspNet.Identity;
 using WebUI.Extensions;
 using WebUI.Models;
+using System.Data.Entity;
 
 namespace WebUI.Controllers
 {
@@ -83,7 +84,7 @@ namespace WebUI.Controllers
         public ActionResult Edit(int id)
         {
             string userID = User.Identity.GetUserId();
-            var dbEntry = db.TsEntries.SingleOrDefault(t => t.TsEntryId == id && t.UserId == userID);
+            var dbEntry = db.TsEntries.Include(c => c.Weeks).SingleOrDefault(t => t.TsEntryId == id && t.UserId == userID);
             if (dbEntry == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -96,6 +97,19 @@ namespace WebUI.Controllers
             entry.TotalHours = dbEntry.TotalHours;
             entry.Name = dbEntry.Name;
 
+            entry.Weeks = new List<TsWeekViewModel>();
+            foreach(var item in dbEntry.Weeks)
+            {
+                var newWeek = new TsWeekViewModel();
+                newWeek.TsWeekEntryId = item.TsWeekEntryId;
+                newWeek.TsEntryId = item.TsEntryId;
+                newWeek.StartDate = item.StartDate;
+                newWeek.EndDate = item.EndDate;
+                newWeek.TotalHours = item.TotalHours;
+                newWeek.UserId = item.UserId;
+                newWeek.Days = item.Days;
+                entry.Weeks.Add(newWeek);
+            }
             //var templates = db.TsWeekTemplates.Where(t => t.ApplicationUserId == userID).
             //    Select(e => new TsTemplateViewModel()
             //    {

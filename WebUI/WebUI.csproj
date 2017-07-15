@@ -181,6 +181,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Controllers\TimesheetController.cs" />
+    <Compile Include="Controllers\WeekController.cs" />
     <Compile Include="Extensions\NotificationExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -357,6 +358,7 @@
     <Content Include="Views\Shared\_Notifications.cshtml" />
     <Content Include="Views\Timesheet\Edit.cshtml" />
     <Content Include="Views\Timesheet\_Weeks.cshtml" />
+    <Content Include="Views\Week\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

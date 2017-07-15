@@ -23,13 +23,13 @@ namespace WebUI.Models
         public DateTime EndDate { get; set; }
 
         [MaxLength(120)]
-        [Display(Name = "Title")]
+        [Display(Name = "Time Period")]
         public string Name { get; set; }
 
         [Display(Name = "Total Hours")]
         public decimal TotalHours { get; set; }
 
-        public List<TsWeekEntry> Weeks { get; set; }
+        public List<TsWeekViewModel> Weeks { get; set; }
         
         public string UserId { get; set; }
 
