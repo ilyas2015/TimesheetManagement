@@ -359,6 +359,8 @@
     <Content Include="Views\Timesheet\Edit.cshtml" />
     <Content Include="Views\Timesheet\_Weeks.cshtml" />
     <Content Include="Views\Week\Create.cshtml" />
+    <Content Include="Views\Week\Edit.cshtml" />
+    <Content Include="Views\Week\_Days.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

@@ -1,19 +1,22 @@
-﻿@model WebUI.Models.TsEntryViewModel
+﻿@model WebUI.Models.TsWeekViewModel
 
 @{
-    ViewBag.Title = "Edit Timesheet";
+    ViewBag.Title = "Edit";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Edit</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
+        <h4>TsWeekViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.TsEntryId)
+        @Html.HiddenFor(model => model.TsWeekEntryId)
+        @Html.HiddenFor(model => model.UserId)
 
         <div class="form-group">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -39,7 +42,12 @@
             </div>
         </div>
 
-        @Html.Partial("_Weeks", Model)
+        @if (Model.Days != null)
+        {
+            @Html.Partial("_Days", Model.Days)
+        }
+        
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -49,18 +57,17 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Timesheet", "Edit", new { controller = "Timesheet", id = Model.TsEntryId })
 </div>
 
-
-@section scripts {
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap-datetimepicker")
 }
 
 @section styles{
     @Styles.Render("~/Content/bootstrap-datetimepicker")
 }
-
 <script>
     $(document).ready(function () {
         $('#StartDate').datetimepicker(

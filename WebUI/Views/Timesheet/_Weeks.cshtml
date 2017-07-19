@@ -7,6 +7,9 @@
 <table class="table table-bordered table-hover" id="timesheets">
     <tr>
         <th>
+            <label>Period</label>
+        </th>
+        <th>
             <label>Start Date</label>
         </th>
         <th>
@@ -15,26 +18,29 @@
         <th>
             <label>Total Hours</label>
         </th>
-        <th></th>
+        <th>
+            <label>Actions</label>
+        </th>
     </tr>
     @foreach (var item in Model.Weeks)
     {
         <tr>
 
             <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
+                @Html.ActionLink(item.Name, "Edit", new { controller = "Week", id = item.TsWeekEntryId })
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
+                @Html.DisplayFor(modelitem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelitem => item.EndDate)
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.TotalHours)
+                @Html.DisplayFor(modelitem => item.TotalHours)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", "Week", new { id = item.TsWeekEntryId }, null) |
                 <button class='btn-link js-delete' data-tmp-id=@item.TsWeekEntryId>Delete</button>
-                @*@Html.ActionLink("Delete", "Delete", new { id=item.TsWeekEntryId })*@
             </td>
         </tr>
     }

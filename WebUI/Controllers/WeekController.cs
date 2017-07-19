@@ -1,13 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class WeekController : Controller
+    public class WeekController : BaseController
     {
         // GET: Week
         public ActionResult Index()
@@ -30,7 +34,7 @@ namespace WebUI.Controllers
         }
 
         // POST: Week/Create
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
@@ -48,23 +52,49 @@ namespace WebUI.Controllers
         // GET: Week/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var weekDb = db.TsWeekEntriesEntries.Include(d=>d.Days).SingleOrDefault(t => t.TsWeekEntryId == id && t.UserId == userId);
+            if (weekDb == null) return HttpNotFound();
+            var viewWeek = new TsWeekViewModel();
+            viewWeek.TsWeekEntryId = id;
+            viewWeek.UserId = weekDb.UserId;
+            viewWeek.TsEntryId = weekDb.TsEntryId;
+            viewWeek.TotalHours = weekDb.TotalHours;
+            viewWeek.Days = new List<TsDayViewModel>();
+            foreach (var daydb in weekDb.Days)
+            {
+                var newDay = new TsDayViewModel();
+                newDay.TsWeekEntryId = id;
+                newDay.TsDayEntryId = daydb.TsDayEntryId;
+                newDay.EventDate = daydb.EventDate;
+                newDay.Hours = daydb.Hours;
+                viewWeek.Days.Add(newDay);
+            }
+            viewWeek.StartDate = weekDb.StartDate;
+            viewWeek.EndDate = weekDb.EndDate;
+
+            return View(viewWeek);
         }
 
         // POST: Week/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [System.Web.Mvc.HttpPost]
+        public ActionResult Edit(TsWeekViewModel weekModel)
         {
-            try
+            string userID = User.Identity.GetUserId();
+            if (!ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                return View(weekModel);
             }
-            catch
+            var dbWeekEntry = db.TsWeekEntriesEntries.SingleOrDefault(t => t.TsWeekEntryId == weekModel.TsWeekEntryId && t.UserId == userID);
+            if (dbWeekEntry == null)
             {
-                return View();
+                throw new HttpResponseException(HttpStatusCode.NotFound);
             }
+            dbWeekEntry.StartDate = weekModel.StartDate;
+            dbWeekEntry.EndDate = weekModel.EndDate;
+            dbWeekEntry.TotalHours = weekModel.TotalHours;
+            db.SaveChanges();
+            return RedirectToAction("Edit", "Timesheet", new { @id = dbWeekEntry.TsEntryId});
         }
 
         // GET: Week/Delete/5
@@ -74,7 +104,7 @@ namespace WebUI.Controllers
         }
 
         // POST: Week/Delete/5
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

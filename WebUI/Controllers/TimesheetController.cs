@@ -85,6 +85,7 @@ namespace WebUI.Controllers
         {
             string userID = User.Identity.GetUserId();
             var dbEntry = db.TsEntries.Include(c => c.Weeks).SingleOrDefault(t => t.TsEntryId == id && t.UserId == userID);
+            
             if (dbEntry == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -107,7 +108,16 @@ namespace WebUI.Controllers
                 newWeek.EndDate = item.EndDate;
                 newWeek.TotalHours = item.TotalHours;
                 newWeek.UserId = item.UserId;
-                newWeek.Days = item.Days;
+                //newWeek.Days = new List<TsDayViewModel>();
+                //foreach (var daydb in item.Days)
+                //{
+                //    var newDay = new TsDayViewModel();
+                //    newDay.TsWeekEntryId = item.TsWeekEntryId;
+                //    newDay.TsDayEntryId = daydb.TsDayEntryId;
+                //    newDay.EventDate = daydb.EventDate;
+                //    newDay.Hours = daydb.Hours;
+                //    newWeek.Days.Add(newDay);
+                //}
                 entry.Weeks.Add(newWeek);
             }
             //var templates = db.TsWeekTemplates.Where(t => t.ApplicationUserId == userID).

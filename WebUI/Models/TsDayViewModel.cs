@@ -11,6 +11,7 @@ namespace WebUI.Models
     {
         public int TsDayEntryId { get; set; }
         [Required]
+        [Display(Name ="Date")]
         public DateTime EventDate { get; set; }
 
         public int TsWeekEntryId { get; set; }

@@ -29,13 +29,13 @@ namespace WebUI.Models
         public int TsEntryId { get; set; }
         public TsEntry TsEntry { get; set; }
 
-        public List<TsDayEntry> Days { get; set; }
+        public List<TsDayViewModel> Days { get; set; }
 
         [Display(Name="Period")]
         public string Name {
             get
             {
-                return StartDate.ToString("{0:yyyy-MM-dd}") + " - " + EndDate.ToString("{0:yyyy-MM-dd}");
+                return StartDate.ToString("yyyy-MM-dd") + " - " + EndDate.ToString("yyyy-MM-dd");
             }
         }
     }
