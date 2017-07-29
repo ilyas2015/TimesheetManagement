@@ -360,7 +360,8 @@
     <Content Include="Views\Timesheet\_Weeks.cshtml" />
     <Content Include="Views\Week\Create.cshtml" />
     <Content Include="Views\Week\Edit.cshtml" />
-    <Content Include="Views\Week\_Days.cshtml" />
+    <Content Include="Views\Timesheet\_Days.cshtml" />
+    <Content Include="Views\Timesheet\_EditHours.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

@@ -11,7 +11,6 @@ namespace Data.DataModels
 {
     public class TsWeekEntry
     {
-
         public int TsWeekEntryId { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
@@ -28,8 +27,27 @@ namespace Data.DataModels
         public int TsEntryId { get; set; }
         public TsEntry TsEntry { get; set; }
 
-        public List<TsDayEntry> Days { get; set; }
+        
+        public DateTime? Day1 { get; set; }
+        public TimeSpan Day1Hours { get; set; }
 
+        public DateTime? Day2 { get; set; }
+        public TimeSpan Day2Hours { get; set; }
+
+        public DateTime? Day3 { get; set; }
+        public TimeSpan Day3Hours { get; set; }
+
+        public DateTime? Day4 { get; set; }
+        public TimeSpan Day4Hours { get; set; }
+
+        public DateTime? Day5 { get; set; }
+        public TimeSpan Day5Hours { get; set; }
+
+        public DateTime? Day6 { get; set; }
+        public TimeSpan Day6Hours { get; set; }
+
+        public DateTime? Day7 { get; set; }
+        public TimeSpan Day7Hours { get; set; }
 
     }
 }

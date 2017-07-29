@@ -1,47 +1,25 @@
-@model WebUI.Models.TsEntryViewModel
+@model List<WebUI.Models.TsWeekViewModel>
 
-<p>
-    @Html.ActionLink("Create New", "Create", "Week", new { id = Model.TsEntryId })
-</p>
-
-<table class="table table-bordered table-hover" id="timesheets">
-    <tr>
-        <th>
-            <label>Period</label>
-        </th>
-        <th>
-            <label>Start Date</label>
-        </th>
-        <th>
-            <label>End Date</label>
-        </th>
-        <th>
-            <label>Total Hours</label>
-        </th>
-        <th>
-            <label>Actions</label>
-        </th>
-    </tr>
-    @foreach (var item in Model.Weeks)
+<div class="panel-group" id="accordion">
+    @{ int colpan = 1;}
+    @foreach (var item in Model)
     {
-        <tr>
-
-            <td>
-                @Html.ActionLink(item.Name, "Edit", new { controller = "Week", id = item.TsWeekEntryId })
-            </td>
-            <td>
-                @Html.DisplayFor(modelitem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelitem => item.EndDate)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelitem => item.TotalHours)
-            </td>
-            <td>
-                <button class='btn-link js-delete' data-tmp-id=@item.TsWeekEntryId>Delete</button>
-            </td>
-        </tr>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse@(colpan)">
+                        @item.Name : @item.TotalHours
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse@(colpan)" class="panel-collapse collapse @(colpan==1? "in":string.Empty)">
+                <div class="panel-body" id="dvDays@(item.TsWeekEntryId)">
+                    @Html.Partial("_Days", @item)
+                </div>
+            </div>
+        </div>
+        colpan++;
     }
-</table>
+
+</div>
+

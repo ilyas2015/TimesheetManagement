@@ -64,7 +64,6 @@
     <Compile Include="DataModels\ApplicationDbContext.cs" />
     <Compile Include="DataModels\TsEntry.cs" />
     <Compile Include="DataModels\TsTemplate.cs" />
-    <Compile Include="DataModels\TsDayEntry.cs" />
     <Compile Include="DataModels\TsWeekEntry.cs" />
     <Compile Include="Migrations\201704100044311_FirstInitialTables.cs" />
     <Compile Include="Migrations\201704100044311_FirstInitialTables.Designer.cs">
@@ -98,6 +97,18 @@
     <Compile Include="Migrations\201707151443021_AddIsDefaultProperty.Designer.cs">
       <DependentUpon>201707151443021_AddIsDefaultProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707200258324_DropDayEntryTable.cs" />
+    <Compile Include="Migrations\201707200258324_DropDayEntryTable.Designer.cs">
+      <DependentUpon>201707200258324_DropDayEntryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707210338257_WeekEntryChanges.cs" />
+    <Compile Include="Migrations\201707210338257_WeekEntryChanges.Designer.cs">
+      <DependentUpon>201707210338257_WeekEntryChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707222148006_MakingNullableDatesOfweeks.cs" />
+    <Compile Include="Migrations\201707222148006_MakingNullableDatesOfweeks.Designer.cs">
+      <DependentUpon>201707222148006_MakingNullableDatesOfweeks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DbMigrationConfig.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +139,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707151443021_AddIsDefaultProperty.resx">
       <DependentUpon>201707151443021_AddIsDefaultProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707200258324_DropDayEntryTable.resx">
+      <DependentUpon>201707200258324_DropDayEntryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707210338257_WeekEntryChanges.resx">
+      <DependentUpon>201707210338257_WeekEntryChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707222148006_MakingNullableDatesOfweeks.resx">
+      <DependentUpon>201707222148006_MakingNullableDatesOfweeks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

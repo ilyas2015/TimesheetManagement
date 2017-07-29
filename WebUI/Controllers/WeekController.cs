@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -53,23 +54,29 @@ namespace WebUI.Controllers
         public ActionResult Edit(int id)
         {
             var userId = User.Identity.GetUserId();
-            var weekDb = db.TsWeekEntriesEntries.Include(d=>d.Days).SingleOrDefault(t => t.TsWeekEntryId == id && t.UserId == userId);
+            var weekDb = db.TsWeekEntriesEntries.SingleOrDefault(t => t.TsWeekEntryId == id && t.UserId == userId);
             if (weekDb == null) return HttpNotFound();
             var viewWeek = new TsWeekViewModel();
             viewWeek.TsWeekEntryId = id;
             viewWeek.UserId = weekDb.UserId;
             viewWeek.TsEntryId = weekDb.TsEntryId;
             viewWeek.TotalHours = weekDb.TotalHours;
-            viewWeek.Days = new List<TsDayViewModel>();
-            foreach (var daydb in weekDb.Days)
-            {
-                var newDay = new TsDayViewModel();
-                newDay.TsWeekEntryId = id;
-                newDay.TsDayEntryId = daydb.TsDayEntryId;
-                newDay.EventDate = daydb.EventDate;
-                newDay.Hours = daydb.Hours;
-                viewWeek.Days.Add(newDay);
-            }
+
+            viewWeek.Day1 = weekDb.Day1;
+            viewWeek.Day1Hours = weekDb.Day1Hours;
+            viewWeek.Day2 = weekDb.Day2;
+            viewWeek.Day2Hours = weekDb.Day2Hours;
+            viewWeek.Day3 = weekDb.Day3;
+            viewWeek.Day3Hours = weekDb.Day3Hours;
+            viewWeek.Day4 = weekDb.Day4;
+            viewWeek.Day4Hours = weekDb.Day4Hours;
+            viewWeek.Day5 = weekDb.Day5;
+            viewWeek.Day5Hours = weekDb.Day5Hours;
+            viewWeek.Day6 = weekDb.Day6;
+            viewWeek.Day6Hours = weekDb.Day6Hours;
+            viewWeek.Day7 = weekDb.Day7;
+            viewWeek.Day7Hours = weekDb.Day7Hours;
+           
             viewWeek.StartDate = weekDb.StartDate;
             viewWeek.EndDate = weekDb.EndDate;
 
@@ -118,5 +125,7 @@ namespace WebUI.Controllers
                 return View();
             }
         }
+
+        
     }
 }

@@ -11,11 +11,11 @@ namespace WebUI.Models
     {
         public int TsWeekEntryId { get; set; }
         [Required]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
         [Required]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "End Date")]
         public DateTime EndDate { get; set; }
         //public int WeekTemplateId { get; set; }
@@ -29,7 +29,7 @@ namespace WebUI.Models
         public int TsEntryId { get; set; }
         public TsEntry TsEntry { get; set; }
 
-        public List<TsDayViewModel> Days { get; set; }
+        //public List<TsDayViewModel> Days { get; set; }
 
         [Display(Name="Period")]
         public string Name {
@@ -38,5 +38,34 @@ namespace WebUI.Models
                 return StartDate.ToString("yyyy-MM-dd") + " - " + EndDate.ToString("yyyy-MM-dd");
             }
         }
+
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Day1 { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
+        public TimeSpan Day1Hours { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Day2 { get; set; }
+        public TimeSpan Day2Hours { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Day3 { get; set; }
+        public TimeSpan Day3Hours { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Day4 { get; set; }
+        public TimeSpan Day4Hours { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Day5 { get; set; }
+        public TimeSpan Day5Hours { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Day6 { get; set; }
+        public TimeSpan Day6Hours { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Day7 { get; set; }
+        public TimeSpan Day7Hours { get; set; }
     }
 }

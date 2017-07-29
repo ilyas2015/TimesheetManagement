@@ -1,7 +1,7 @@
 ﻿@model WebUI.Models.TsEntryViewModel
 
 @{
-    ViewBag.Title = "Edit Timesheet";
+    ViewBag.Title = "Timesheet Details";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,17 +34,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TotalHours, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TotalHours, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TotalHours, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.TotalHours, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        @Html.Partial("_Weeks", Model)
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+        @Html.Partial("_Weeks", Model.Weeks)
     </div>
 }
 
@@ -52,6 +47,19 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+<div class="modal fade" id="dvEditHours" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h3 class="modal-title">Edit hours</h3>
+            </div>
+            <div class="modal-body" id="dvEditHoursBody">
+
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts {
     @Scripts.Render("~/bundles/bootstrap-datetimepicker")
@@ -62,19 +70,82 @@
 }
 
 <script>
-    $(document).ready(function () {
-        $('#StartDate').datetimepicker(
-            {
-                format: "MM/DD/YYYY",
-                sideBySide: true,
-                showTodayButton: true
+
+
+    var EditHours = function (weekId) {
+
+        var url = "/timesheet/EditHours?weekId=" + weekId;
+        $("#dvEditHoursBody").load(url, function () {
+
+
+            $('#Day1Hours').datetimepicker(
+                {
+                    format: "HH:mm"
+                });
+            $('#Day2Hours').datetimepicker(
+                {
+                    format: "HH:mm"
+                });
+            $('#Day3Hours').datetimepicker(
+                {
+                    format: "HH:mm"
+                });
+            $('#Day4Hours').datetimepicker(
+                {
+                    format: "HH:mm"
+                });
+            $('#Day5Hours').datetimepicker(
+                {
+                    format: "HH:mm"
+                });
+            $('#Day6Hours').datetimepicker(
+                {
+                    format: "HH:mm"
+                });
+            $('#Day7Hours').datetimepicker(
+                {
+                    format: "HH:mm"
+                });
+
+            $("#btnSaveHours").click(function () {
+
+                var myformdata = $("#myEditHoursForm").serialize();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/timesheet/EditHours",
+                    data: myformdata,
+                    success: function () {
+                        $("#dvEditHours").modal("hide");
+                        var dvDays = "dvDays" + weekId;
+                        $("#" + dvDays).load('@(Url.Action("GetWeekDays", "Timesheet",null, Request.Url.Scheme))?weekId=' + weekId);
+                        updateTotalHours();
+                    }
+                });
+
+
+
+
+
             });
 
-        $('#EndDate').datetimepicker(
-            {
-                format: "MM/DD/YYYY",
-                sideBySide: true,
-                showTodayButton: true
-            });
-    });
+            $("#dvEditHours").modal("show");
+        });
+
+
+    }
+
+    function updateTotalHours() {
+
+     var entryId = $("#TsEntryId").val();
+
+     $.ajax({
+         type: "GET",
+         url: '@Url.Action("GetTotalHours", "Timesheet")' + '?entryId=' + entryId,
+         datatype: "Json",
+         success: function (data) {
+             $("#TotalHours").val(data.totalHours);
+             }
+         });
+      };
 </script>

@@ -11,6 +11,8 @@ namespace WebUI.Models
 {
     public class TsTemplateViewModel
     {
+        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a template from the list")]
         public int TsWeekTemplateId { get; set; }
         //public string ApplicationUserId { get; set; }
         //public ApplicationUser ApplicationUser { get; set; }

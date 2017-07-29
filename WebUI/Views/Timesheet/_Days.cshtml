@@ -1,0 +1,116 @@
+﻿@model WebUI.Models.TsWeekViewModel
+
+<table class="table">
+    <tr>
+        <th>
+            Weekday
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Hours
+        </th>
+    </tr>
+    @if(Model.Day1!=null)
+    {
+        <tr>
+            <td>
+                @(((DateTime)Model.Day1).DayOfWeek.ToString())
+            </td>
+            <td>
+                @(((DateTime)Model.Day1).ToString("MMM dd, yyyy"))
+            </td>
+            <td>
+                @(new DateTime(Model.Day1Hours.Ticks).ToString("HH:mm"))
+                <a href="#" class="btn btn-success" data-toggle="modal" onclick="EditHours(@Model.TsWeekEntryId)"><i class="glyphicon glyphicon-pencil"></i></a>
+            </td>
+        </tr>
+    }
+    @if (Model.Day2 != null)
+    {
+        <tr>
+            <td>
+                @(((DateTime)Model.Day2).DayOfWeek.ToString())
+            </td>
+            <td>
+                @(((DateTime)Model.Day2).ToString("MMM dd, yyyy"))
+            </td>
+            <td>
+                @(new DateTime(Model.Day2Hours.Ticks).ToString("HH:mm"))
+            </td>
+        </tr>
+    }
+    @if (Model.Day3 != null)
+    {
+        <tr>
+            <td>
+                @(((DateTime)Model.Day3).DayOfWeek.ToString())
+            </td>
+            <td>
+                @(((DateTime)Model.Day3).ToString("MMM dd, yyyy"))
+            </td>
+            <td>
+                @(new DateTime(Model.Day3Hours.Ticks).ToString("HH:mm"))
+            </td>
+        </tr>
+    }
+    @if (Model.Day4 != null)
+    {
+        <tr>
+            <td>
+                @(((DateTime)Model.Day4).DayOfWeek.ToString())
+            </td>
+            <td>
+                @(((DateTime)Model.Day4).ToString("MMM dd, yyyy"))
+            </td>
+            <td>
+                @(new DateTime(Model.Day4Hours.Ticks).ToString("HH:mm"))
+            </td>
+        </tr>
+    }
+    @if (Model.Day5 != null)
+    {
+        <tr>
+            <td>
+                @(((DateTime)Model.Day5).DayOfWeek.ToString())
+            </td>
+            <td>
+                @(((DateTime)Model.Day5).ToString("MMM dd, yyyy"))
+            </td>
+            <td>
+                @(new DateTime(Model.Day5Hours.Ticks).ToString("HH:mm"))
+            </td>
+        </tr>
+    }
+    @if (Model.Day6 != null)
+    {
+        <tr>
+            <td>
+                @(((DateTime)Model.Day6).DayOfWeek.ToString())
+            </td>
+            <td>
+                @(((DateTime)Model.Day6).ToString("MMM dd, yyyy"))
+            </td>
+            <td>
+                @(new DateTime(Model.Day6Hours.Ticks).ToString("HH:mm"))
+            </td>
+        </tr>
+    }
+    @if (Model.Day7 != null)
+    {
+        <tr>
+            <td>
+                @(((DateTime)Model.Day7).DayOfWeek.ToString())
+            </td>
+            <td>
+                @(((DateTime)Model.Day7).ToString("MMM dd, yyyy"))
+            </td>
+            <td>
+                @(new DateTime(Model.Day7Hours.Ticks).ToString("HH:mm"))
+            </td>
+        </tr>
+    }
+
+
+</table>
