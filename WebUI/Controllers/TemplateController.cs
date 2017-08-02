@@ -72,6 +72,8 @@ namespace WebUI.Controllers
             dbTemplate.FillDay6 = template.FillDay6;
             dbTemplate.FillDay7 = template.FillDay7;
             dbTemplate.IsDefault = template.IsDefault;
+            dbTemplate.StartTime = template.StartTime;
+            dbTemplate.EndTime = template.EndTime;
 
             db.TsWeekTemplates.Add(dbTemplate);
             db.SaveChanges();
@@ -113,6 +115,8 @@ namespace WebUI.Controllers
             viewTemplate.FillDay6 = template.FillDay6;
             viewTemplate.FillDay7 = template.FillDay7;
             viewTemplate.IsDefault = template.IsDefault;
+            viewTemplate.StartTime = template.StartTime;
+            viewTemplate.EndTime = template.EndTime;
             return View(viewTemplate);
         }
 

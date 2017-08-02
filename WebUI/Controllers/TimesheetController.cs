@@ -390,6 +390,11 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
                     }
+                    if (week.Day1Hours.Minutes > 0)
+                    {
+                        week.Day1StartTime = template.StartTime;
+                        week.Day1EndTime = template.EndTime;
+                    }
                 }
                 if (week.Day2 != null)
                 {
@@ -423,6 +428,11 @@ namespace WebUI.Controllers
                             week.Day2Hours = TimeSpan.FromHours(template.FillDay7 ? (double)template.HoursInDay : 0);
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
+                    }
+                    if (week.Day2Hours.Minutes > 0)
+                    {
+                        week.Day2StartTime = template.StartTime;
+                        week.Day2EndTime = template.EndTime;
                     }
                 }
                 if (week.Day3 != null)
@@ -458,6 +468,11 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
                     }
+                    if (week.Day3Hours.Minutes > 0)
+                    {
+                        week.Day3StartTime = template.StartTime;
+                        week.Day3EndTime = template.EndTime;
+                    }
                 }
                 if (week.Day4 != null)
                 {
@@ -491,6 +506,11 @@ namespace WebUI.Controllers
                             week.Day4Hours = TimeSpan.FromHours(template.FillDay7 ? (double)template.HoursInDay : 0);
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
+                    }
+                    if (week.Day4Hours.Minutes > 0)
+                    {
+                        week.Day4StartTime = template.StartTime;
+                        week.Day4EndTime = template.EndTime;
                     }
                 }
                 if (week.Day5 != null)
@@ -526,6 +546,11 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
                     }
+                    if (week.Day5Hours.Minutes > 0)
+                    {
+                        week.Day5StartTime = template.StartTime;
+                        week.Day5EndTime = template.EndTime;
+                    }
                 }
                 if (week.Day6 != null)
                 {
@@ -560,6 +585,11 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
                     }
+                    if (week.Day6Hours.Minutes > 0)
+                    {
+                        week.Day6StartTime = template.StartTime;
+                        week.Day6EndTime = template.EndTime;
+                    }
                 }
                 if (week.Day7 != null)
                 {
@@ -593,6 +623,11 @@ namespace WebUI.Controllers
                             week.Day7Hours = TimeSpan.FromHours(template.FillDay7 ? (double)template.HoursInDay : 0);
                             totalHours += template.FillDay1 ? (double)template.HoursInDay : 0;
                             break;
+                    }
+                    if (week.Day7Hours.Minutes > 0)
+                    {
+                        week.Day7StartTime = template.StartTime;
+                        week.Day7EndTime = template.EndTime;
                     }
                 }
                 week.TotalHours = (decimal)totalHours;

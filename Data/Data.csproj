@@ -109,6 +109,14 @@
     <Compile Include="Migrations\201707222148006_MakingNullableDatesOfweeks.Designer.cs">
       <DependentUpon>201707222148006_MakingNullableDatesOfweeks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707292350143_addingNewTemplateFields.cs" />
+    <Compile Include="Migrations\201707292350143_addingNewTemplateFields.Designer.cs">
+      <DependentUpon>201707292350143_addingNewTemplateFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707310220151_WeekEntryUpdate.cs" />
+    <Compile Include="Migrations\201707310220151_WeekEntryUpdate.Designer.cs">
+      <DependentUpon>201707310220151_WeekEntryUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DbMigrationConfig.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +156,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707222148006_MakingNullableDatesOfweeks.resx">
       <DependentUpon>201707222148006_MakingNullableDatesOfweeks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707292350143_addingNewTemplateFields.resx">
+      <DependentUpon>201707292350143_addingNewTemplateFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707310220151_WeekEntryUpdate.resx">
+      <DependentUpon>201707310220151_WeekEntryUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -39,6 +39,12 @@ namespace WebUI.Models
         [Display(Name = "Saturday")]
         public bool FillDay7 { get; set; }
         [Display(Name ="Is Default")]
+        [Required]
         public bool IsDefault { get; set; }
+        [Display(Name ="Start Time")]
+        public DateTime StartTime { get; set; }
+        [Display(Name ="End Time")]
+        [Required]
+        public DateTime EndTime { get; set; }
     }
 }
