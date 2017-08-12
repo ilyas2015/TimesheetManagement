@@ -138,6 +138,8 @@ namespace WebUI.Controllers
             dbTemplate.FillDay7 = template.FillDay7;
             dbTemplate.ApplicationUserId = userId;
             dbTemplate.IsDefault = template.IsDefault;
+            dbTemplate.StartTime = template.StartTime;
+            dbTemplate.EndTime = template.EndTime;
 
             db.SaveChanges();
 

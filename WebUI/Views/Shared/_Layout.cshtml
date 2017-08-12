@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My Work Space</title>
+    @Styles.Render("~/Content/ej/web/bootstrap-theme/ej.web.all.min.css")
     @Styles.Render("~/Content/css")
     @RenderSection("styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
@@ -11,7 +12,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ejscripts")
     @RenderSection("scripts2", required: false)
+   
+
 
 </head>
 <body>
@@ -32,6 +36,7 @@
                         <li>@Html.ActionLink("My Timesheets", "Index", "Timesheet")</li>
                         <li>@Html.ActionLink("Create New", "Create", "Timesheet")</li>
                         <li>@Html.ActionLink("My Templates", "Index", "Template")</li>
+                        <li>@Html.ActionLink("Document Management", "Index", "Document")</li>
                     }
                     
                 </ul>
@@ -51,6 +56,6 @@
     
    
     @RenderSection("scripts", required: false)
-    
+    @Html.EJ().ScriptManager()
 </body>
 </html>

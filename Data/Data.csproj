@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="DataModels\ApplicationUser.cs" />
     <Compile Include="DataModels\ApplicationDbContext.cs" />
+    <Compile Include="DataModels\TsDocumentEntity.cs" />
     <Compile Include="DataModels\TsEntry.cs" />
     <Compile Include="DataModels\TsTemplate.cs" />
     <Compile Include="DataModels\TsWeekEntry.cs" />
@@ -117,6 +118,22 @@
     <Compile Include="Migrations\201707310220151_WeekEntryUpdate.Designer.cs">
       <DependentUpon>201707310220151_WeekEntryUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708050126080_addDocumentEntityClass.cs" />
+    <Compile Include="Migrations\201708050126080_addDocumentEntityClass.Designer.cs">
+      <DependentUpon>201708050126080_addDocumentEntityClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708050129258_SeedDefaultTimsheetDocument.cs" />
+    <Compile Include="Migrations\201708050129258_SeedDefaultTimsheetDocument.Designer.cs">
+      <DependentUpon>201708050129258_SeedDefaultTimsheetDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708071916127_AddSystemDefaultField.cs" />
+    <Compile Include="Migrations\201708071916127_AddSystemDefaultField.Designer.cs">
+      <DependentUpon>201708071916127_AddSystemDefaultField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708072245110_SeedingAdminDoc.cs" />
+    <Compile Include="Migrations\201708072245110_SeedingAdminDoc.Designer.cs">
+      <DependentUpon>201708072245110_SeedingAdminDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DbMigrationConfig.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +179,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707310220151_WeekEntryUpdate.resx">
       <DependentUpon>201707310220151_WeekEntryUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708050126080_addDocumentEntityClass.resx">
+      <DependentUpon>201708050126080_addDocumentEntityClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708050129258_SeedDefaultTimsheetDocument.resx">
+      <DependentUpon>201708050129258_SeedDefaultTimsheetDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708071916127_AddSystemDefaultField.resx">
+      <DependentUpon>201708071916127_AddSystemDefaultField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708072245110_SeedingAdminDoc.resx">
+      <DependentUpon>201708072245110_SeedingAdminDoc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

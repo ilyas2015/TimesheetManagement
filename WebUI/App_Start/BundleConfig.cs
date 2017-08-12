@@ -30,6 +30,10 @@ namespace WebUI
                       "~/Scripts/moment.js",
                       "~/Scripts/bootstrap-datetimepicker.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/ejscripts").Include(
+                      "~/Scripts/ej/web/ej.web.all.min.js",
+                      "~/Scripts/ej/common/ej.unobtrusive.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-united.css",
                       "~/Content/site.css"));

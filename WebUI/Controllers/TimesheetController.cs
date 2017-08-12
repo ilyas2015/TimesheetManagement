@@ -149,6 +149,27 @@ namespace WebUI.Controllers
                 newWeek.Day7 = item.Day7;
                 newWeek.Day7Hours = item.Day7Hours;
 
+                newWeek.Day1StartTime = item.Day1StartTime;
+                newWeek.Day1EndTime = item.Day1EndTime;
+
+                newWeek.Day2StartTime = item.Day2StartTime;
+                newWeek.Day2EndTime = item.Day2EndTime;
+
+                newWeek.Day3StartTime = item.Day3StartTime;
+                newWeek.Day3EndTime = item.Day3EndTime;
+
+                newWeek.Day4StartTime = item.Day4StartTime;
+                newWeek.Day4EndTime = item.Day4EndTime;
+
+                newWeek.Day5StartTime = item.Day5StartTime;
+                newWeek.Day5EndTime = item.Day5EndTime;
+
+                newWeek.Day6StartTime = item.Day6StartTime;
+                newWeek.Day6EndTime = item.Day6EndTime;
+
+                newWeek.Day7StartTime = item.Day7StartTime;
+                newWeek.Day7EndTime = item.Day7EndTime;
+
                 entry.Weeks.Add(newWeek);
             }
             //var templates = db.TsWeekTemplates.Where(t => t.ApplicationUserId == userID).
@@ -211,6 +232,27 @@ namespace WebUI.Controllers
             viewWeek.Day7 = weekDb.Day7;
             viewWeek.Day7Hours = weekDb.Day7Hours;
 
+            viewWeek.Day1StartTime = weekDb.Day1StartTime;
+            viewWeek.Day1EndTime = weekDb.Day1EndTime;
+
+            viewWeek.Day2StartTime = weekDb.Day2StartTime;
+            viewWeek.Day2EndTime = weekDb.Day2EndTime;
+
+            viewWeek.Day3StartTime = weekDb.Day3StartTime;
+            viewWeek.Day3EndTime = weekDb.Day3EndTime;
+
+            viewWeek.Day4StartTime = weekDb.Day4StartTime;
+            viewWeek.Day4EndTime = weekDb.Day4EndTime;
+
+            viewWeek.Day5StartTime = weekDb.Day5StartTime;
+            viewWeek.Day5EndTime = weekDb.Day5EndTime;
+
+            viewWeek.Day6StartTime = weekDb.Day6StartTime;
+            viewWeek.Day6EndTime = weekDb.Day6EndTime;
+
+            viewWeek.Day7StartTime = weekDb.Day7StartTime;
+            viewWeek.Day7EndTime = weekDb.Day7EndTime;
+
             viewWeek.StartDate = weekDb.StartDate;
             viewWeek.EndDate = weekDb.EndDate;
             return PartialView("_EditHours", viewWeek);
@@ -238,7 +280,21 @@ namespace WebUI.Controllers
             dbWeekEntry.Day5Hours = model.Day5Hours;
             dbWeekEntry.Day6Hours = model.Day6Hours;
             dbWeekEntry.Day7Hours = model.Day7Hours;
-            
+            dbWeekEntry.Day1StartTime = model.Day1StartTime;
+            dbWeekEntry.Day1EndTime = model.Day1EndTime;
+            dbWeekEntry.Day2StartTime = model.Day2StartTime;
+            dbWeekEntry.Day2EndTime = model.Day2EndTime;
+            dbWeekEntry.Day3StartTime = model.Day3StartTime;
+            dbWeekEntry.Day3EndTime = model.Day3EndTime;
+            dbWeekEntry.Day4StartTime = model.Day4StartTime;
+            dbWeekEntry.Day4EndTime = model.Day4EndTime;
+            dbWeekEntry.Day5StartTime = model.Day5StartTime;
+            dbWeekEntry.Day5EndTime = model.Day5EndTime;
+            dbWeekEntry.Day6StartTime = model.Day6StartTime;
+            dbWeekEntry.Day6EndTime = model.Day6EndTime;
+            dbWeekEntry.Day7StartTime = model.Day7StartTime;
+            dbWeekEntry.Day7EndTime = model.Day7EndTime;
+
             TimeSpan totalTime = model.Day1Hours + model.Day2Hours + model.Day3Hours + model.Day4Hours + model.Day5Hours + model.Day6Hours + model.Day7Hours;
             dbWeekEntry.TotalHours = (decimal)totalTime.TotalHours;
             db.SaveChanges();
@@ -295,6 +351,20 @@ namespace WebUI.Controllers
             viewWeek.Day6Hours = weekDb.Day6Hours;
             viewWeek.Day7 = weekDb.Day7;
             viewWeek.Day7Hours = weekDb.Day7Hours;
+            viewWeek.Day1StartTime = weekDb.Day1StartTime;
+            viewWeek.Day1EndTime = weekDb.Day1EndTime;
+            viewWeek.Day2StartTime = weekDb.Day2StartTime;
+            viewWeek.Day2EndTime = weekDb.Day2EndTime;
+            viewWeek.Day3StartTime = weekDb.Day3StartTime;
+            viewWeek.Day3EndTime = weekDb.Day3EndTime;
+            viewWeek.Day4StartTime = weekDb.Day4StartTime;
+            viewWeek.Day4EndTime = weekDb.Day4EndTime;
+            viewWeek.Day5StartTime = weekDb.Day5StartTime;
+            viewWeek.Day5EndTime = weekDb.Day5EndTime;
+            viewWeek.Day6StartTime = weekDb.Day6StartTime;
+            viewWeek.Day6EndTime = weekDb.Day6EndTime;
+            viewWeek.Day7StartTime = weekDb.Day7StartTime;
+            viewWeek.Day7EndTime = weekDb.Day7EndTime;
 
             viewWeek.StartDate = weekDb.StartDate;
             viewWeek.EndDate = weekDb.EndDate;
@@ -390,7 +460,7 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
                     }
-                    if (week.Day1Hours.Minutes > 0)
+                    if (week.Day1Hours.TotalMinutes > 0)
                     {
                         week.Day1StartTime = template.StartTime;
                         week.Day1EndTime = template.EndTime;
@@ -429,7 +499,7 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
                     }
-                    if (week.Day2Hours.Minutes > 0)
+                    if (week.Day2Hours.TotalMinutes > 0)
                     {
                         week.Day2StartTime = template.StartTime;
                         week.Day2EndTime = template.EndTime;
@@ -468,7 +538,7 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
                     }
-                    if (week.Day3Hours.Minutes > 0)
+                    if (week.Day3Hours.TotalMinutes > 0)
                     {
                         week.Day3StartTime = template.StartTime;
                         week.Day3EndTime = template.EndTime;
@@ -507,7 +577,7 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
                     }
-                    if (week.Day4Hours.Minutes > 0)
+                    if (week.Day4Hours.TotalMinutes > 0)
                     {
                         week.Day4StartTime = template.StartTime;
                         week.Day4EndTime = template.EndTime;
@@ -546,7 +616,7 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
                     }
-                    if (week.Day5Hours.Minutes > 0)
+                    if (week.Day5Hours.TotalMinutes > 0)
                     {
                         week.Day5StartTime = template.StartTime;
                         week.Day5EndTime = template.EndTime;
@@ -585,7 +655,7 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay7 ? (double)template.HoursInDay : 0;
                             break;
                     }
-                    if (week.Day6Hours.Minutes > 0)
+                    if (week.Day6Hours.TotalMinutes > 0)
                     {
                         week.Day6StartTime = template.StartTime;
                         week.Day6EndTime = template.EndTime;
@@ -624,7 +694,7 @@ namespace WebUI.Controllers
                             totalHours += template.FillDay1 ? (double)template.HoursInDay : 0;
                             break;
                     }
-                    if (week.Day7Hours.Minutes > 0)
+                    if (week.Day7Hours.TotalMinutes > 0)
                     {
                         week.Day7StartTime = template.StartTime;
                         week.Day7EndTime = template.EndTime;

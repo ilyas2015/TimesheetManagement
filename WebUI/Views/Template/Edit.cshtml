@@ -115,7 +115,7 @@
             @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.StartTime)
+                    @Html.EJ().TimePickerFor(model => model.StartTime)
                     @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -125,7 +125,7 @@
             @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.EndTime)
+                    @Html.EJ().TimePickerFor(model => model.EndTime)
                     @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -142,3 +142,11 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script>
+    jQuery(document).ready(function () {
+
+        @Html.EJ().TimePicker("StartTime")
+    });
+
+</script>

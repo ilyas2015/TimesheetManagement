@@ -67,5 +67,26 @@ namespace WebUI.Models
         [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Day7 { get; set; }
         public TimeSpan Day7Hours { get; set; }
+
+        public DateTime? Day1StartTime { get; set; }
+        public DateTime? Day1EndTime { get; set; }
+
+        public DateTime? Day2StartTime { get; set; }
+        public DateTime? Day2EndTime { get; set; }
+
+        public DateTime? Day3StartTime { get; set; }
+        public DateTime? Day3EndTime { get; set; }
+
+        public DateTime? Day4StartTime { get; set; }
+        public DateTime? Day4EndTime { get; set; }
+
+        public DateTime? Day5StartTime { get; set; }
+        public DateTime? Day5EndTime { get; set; }
+
+        public DateTime? Day6StartTime { get; set; }
+        public DateTime? Day6EndTime { get; set; }
+
+        public DateTime? Day7StartTime { get; set; }
+        public DateTime? Day7EndTime { get; set; }
     }
 }

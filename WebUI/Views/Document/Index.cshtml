@@ -1,0 +1,30 @@
+﻿@model WebUI.Models.TsDocumentViewerModel
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@using (Html.BeginForm("Upload", "Document", FormMethod.Post,
+                new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h2>Template documents</h2>
+
+    @Html.Partial("DocsList", Model)
+
+
+    <h2>Index</h2>
+
+    <fieldset>
+        <legend>Upload a file</legend>
+        <div class="editor-field">
+            @Html.TextBox("DocumentUpload", "", new { type = "file" })
+        </div>
+        <div class="editor-field">
+            <input type="submit" value="Upload" />
+        </div>
+        
+    </fieldset>
+}

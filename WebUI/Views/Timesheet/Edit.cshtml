@@ -48,7 +48,7 @@
 </div>
 
 <div class="modal fade" id="dvEditHours" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog large">
         <div class="modal-content">
             <div class="modal-header">
                 <a href="#" class="close" data-dismiss="modal">&times;</a>
@@ -60,6 +60,10 @@
         </div>
     </div>
 </div>
+
+
+
+
 
 @section scripts {
     @Scripts.Render("~/bundles/bootstrap-datetimepicker")
@@ -123,17 +127,76 @@
                     }
                 });
 
-
-
-
-
             });
 
             $("#dvEditHours").modal("show");
         });
-
+        ej.widget.init($("#dvEditHours"));
 
     }
+
+    var EditHours2 = function (weekId) {
+
+        $.ajax({
+            url: '/timesheet/EditHours?weekId=' + weekId,
+            success: onSuccess
+        });
+
+        function onSuccess(result) {
+        $("#dvEditHoursBody").html(result);
+
+        $('#Day1Hours').datetimepicker(
+            {
+                format: "HH:mm"
+            });
+        $('#Day2Hours').datetimepicker(
+            {
+                format: "HH:mm"
+            });
+        $('#Day3Hours').datetimepicker(
+            {
+                format: "HH:mm"
+            });
+        $('#Day4Hours').datetimepicker(
+            {
+                format: "HH:mm"
+            });
+        $('#Day5Hours').datetimepicker(
+            {
+                format: "HH:mm"
+            });
+        $('#Day6Hours').datetimepicker(
+            {
+                format: "HH:mm"
+            });
+        $('#Day7Hours').datetimepicker(
+            {
+                format: "HH:mm"
+            });
+
+        $("#btnSaveHours").click(function () {
+
+                var myformdata = $("#myEditHoursForm").serialize();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/timesheet/EditHours",
+                    data: myformdata,
+                    success: function () {
+                        $("#dvEditHours").modal("hide");
+                        var dvDays = "dvDays" + weekId;
+                        $("#" + dvDays).load('@(Url.Action("GetWeekDays", "Timesheet",null, Request.Url.Scheme))?weekId=' + weekId);
+                        updateTotalHours();
+                    }
+                });
+
+            });
+
+        ej.widget.init($("#dvEditHoursBody"));
+        $("#dvEditHours").modal("show");
+    }
+    }
+
 
     function updateTotalHours() {
 
@@ -149,3 +212,10 @@
          });
       };
 </script>
+
+<style>
+    .modal .large {
+        width: 60%;
+        /*margin-left: -40%;*/
+    }
+</style>

@@ -17,6 +17,12 @@
                 <th>
                     Hours
                 </th>
+                <th>
+                    Start Time
+                </th>
+                <th>
+                    End Time
+                </th>
             </tr>
             @if (Model.Day1 != null)
             {
@@ -30,6 +36,12 @@
                     <td>
                         @Html.EditorFor(model => model.Day1Hours, new { htmlAttributes = new { @class = "form-control",  } })
                         @Html.ValidationMessageFor(model => model.Day1Hours, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day1StartTime)
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day1EndTime)
                     </td>
                 </tr>
             }
@@ -45,6 +57,12 @@
                     <td>
                         @Html.EditorFor(model => model.Day2Hours, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Day2Hours, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day2StartTime)
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day2EndTime)
                     </td>
                 </tr>
             }
@@ -62,6 +80,12 @@
                         @Html.EditorFor(model => model.Day3Hours, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Day3Hours, "", new { @class = "text-danger" })
                     </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day3StartTime)
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day3EndTime)
+                    </td>
                 </tr>
             }
             @if (Model.Day4 != null)
@@ -77,6 +101,12 @@
                     <td>
                         @Html.EditorFor(model => model.Day4Hours, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Day4Hours, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day4StartTime)
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day4EndTime)
                     </td>
                 </tr>
             }
@@ -94,6 +124,12 @@
                         @Html.EditorFor(model => model.Day5Hours, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Day5Hours, "", new { @class = "text-danger" })
                     </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day5StartTime)
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day5EndTime)
+                    </td>
                 </tr>
             }
             @if (Model.Day6 != null)
@@ -110,6 +146,12 @@
                         @Html.EditorFor(model => model.Day6Hours, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Day6Hours, "", new { @class = "text-danger" })
                     </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day6StartTime)
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day6EndTime)
+                    </td>
                 </tr>
             }
             @if (Model.Day7 != null)
@@ -125,6 +167,12 @@
                     <td>
                         @Html.EditorFor(model => model.Day7Hours, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Day7Hours, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day7StartTime)
+                    </td>
+                    <td>
+                        @Html.EJ().TimePickerFor(model => Model.Day7EndTime)
                     </td>
                 </tr>
             }

@@ -11,6 +11,15 @@
         <th>
             Hours
         </th>
+        <th>
+            Start Time
+        </th>
+        <th>
+            End Time
+        </th>
+        <th>
+            &nbsp;
+        </th>
     </tr>
     @if(Model.Day1!=null)
     {
@@ -23,7 +32,15 @@
             </td>
             <td>
                 @(new DateTime(Model.Day1Hours.Ticks).ToString("HH:mm"))
-                <a href="#" class="btn btn-success" data-toggle="modal" onclick="EditHours(@Model.TsWeekEntryId)"><i class="glyphicon glyphicon-pencil"></i></a>
+            </td>
+            <td>
+                @( Model.Day1StartTime != null ? ((DateTime)Model.Day1StartTime).ToString("HH:mm tt"): string.Empty)
+            </td>
+            <td>
+                @( Model.Day1EndTime != null ? ((DateTime)Model.Day1EndTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                <a href="#" class="btn btn-success" data-toggle="modal" onclick="EditHours2(@Model.TsWeekEntryId)"><i class="glyphicon glyphicon-pencil"></i></a>
             </td>
         </tr>
     }
@@ -39,6 +56,15 @@
             <td>
                 @(new DateTime(Model.Day2Hours.Ticks).ToString("HH:mm"))
             </td>
+            <td>
+                @( Model.Day2StartTime != null ? ((DateTime)Model.Day2StartTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                @( Model.Day2EndTime != null ? ((DateTime)Model.Day2EndTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                &nbsp;
+            </td>
         </tr>
     }
     @if (Model.Day3 != null)
@@ -52,6 +78,15 @@
             </td>
             <td>
                 @(new DateTime(Model.Day3Hours.Ticks).ToString("HH:mm"))
+            </td>
+            <td>
+                @( Model.Day3StartTime != null ? ((DateTime)Model.Day3StartTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                @( Model.Day3EndTime != null ? ((DateTime)Model.Day3EndTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                &nbsp;
             </td>
         </tr>
     }
@@ -67,6 +102,15 @@
             <td>
                 @(new DateTime(Model.Day4Hours.Ticks).ToString("HH:mm"))
             </td>
+            <td>
+                @( Model.Day4StartTime != null ? ((DateTime)Model.Day4StartTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                @( Model.Day4EndTime != null ? ((DateTime)Model.Day4EndTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                &nbsp;
+            </td>
         </tr>
     }
     @if (Model.Day5 != null)
@@ -80,6 +124,15 @@
             </td>
             <td>
                 @(new DateTime(Model.Day5Hours.Ticks).ToString("HH:mm"))
+            </td>
+            <td>
+                @( Model.Day5StartTime != null ? ((DateTime)Model.Day5StartTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                @( Model.Day5EndTime != null ? ((DateTime)Model.Day5EndTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                &nbsp;
             </td>
         </tr>
     }
@@ -95,6 +148,15 @@
             <td>
                 @(new DateTime(Model.Day6Hours.Ticks).ToString("HH:mm"))
             </td>
+            <td>
+                @( Model.Day6StartTime != null ? ((DateTime)Model.Day6StartTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                @( Model.Day6EndTime != null ? ((DateTime)Model.Day6EndTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                &nbsp;
+            </td>
         </tr>
     }
     @if (Model.Day7 != null)
@@ -108,6 +170,15 @@
             </td>
             <td>
                 @(new DateTime(Model.Day7Hours.Ticks).ToString("HH:mm"))
+            </td>
+            <td>
+                @( Model.Day7StartTime != null ? ((DateTime)Model.Day7StartTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                @( Model.Day7EndTime != null ? ((DateTime)Model.Day7EndTime).ToString("HH:mm tt") : string.Empty)
+            </td>
+            <td>
+                &nbsp;
             </td>
         </tr>
     }
