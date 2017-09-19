@@ -41,6 +41,9 @@
             </td>
             <td>
                 <a href="#" class="btn btn-success" data-toggle="modal" onclick="EditHours2(@Model.TsWeekEntryId)"><i class="glyphicon glyphicon-pencil"></i></a>
+                <a href="@Url.Action("DownloadFilledInTimesheet", "Timesheet", new { weekId = @Model.TsWeekEntryId })" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+                </a>
             </td>
         </tr>
     }

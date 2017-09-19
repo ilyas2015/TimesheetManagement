@@ -31,7 +31,6 @@ namespace WebUI.Controllers
                     docsForDownload.Add(defDoc);
                 }
             }
-
             
             if (dbUserDocs != null)
             {

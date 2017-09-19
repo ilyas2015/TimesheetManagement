@@ -16,6 +16,7 @@ namespace Data.DataModels
         public IDbSet<TsEntry> TsEntries { get; set; }
         public IDbSet<TsWeekEntry> TsWeekEntriesEntries { get; set; }
         public IDbSet<TsDocumentEntity> TsDocumentEntries { get; set; }
+        public IDbSet<TsSetting> TsSettings { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

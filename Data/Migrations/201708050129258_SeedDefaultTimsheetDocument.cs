@@ -10,7 +10,7 @@ namespace Data.Migrations
             Guid docGuid = Guid.NewGuid();
             string newFileName = "TS_" + docGuid.ToString() + ".docx";
 
-            Sql("INSERT INTO TsDocumentEntities (DocumentName, UserId, DocGuid, SavedName, ) VALUES ('Default_Template.docx', 'a0fa7d52-5a2e-4117-8f77-b6104aa707ab', '" + docGuid + "', '" + newFileName + "' )");
+            Sql("INSERT INTO TsDocumentEntities (DocumentName, UserId, DocGuid, SavedName ) VALUES ('Default_Template.docx', 'a0fa7d52-5a2e-4117-8f77-b6104aa707ab', '" + docGuid.ToString() + "', '" + newFileName + "' )");
 
         }
         
